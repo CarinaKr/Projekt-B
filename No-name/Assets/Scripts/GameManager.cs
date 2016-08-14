@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	private float zXPlayer, zYPlayer;
 	private float zXEnemy, zYEnemy;
 	private float zAbstand;
+	public int zPunkte;
 	private bool zGameOver,zGewonnen;
 
 
@@ -61,6 +62,8 @@ public class GameManager : MonoBehaviour {
 		GUI.Label (new Rect (10, 10, 400, 50), "Distanz");
 
 		GUI.HorizontalSlider (new Rect (10, 70, 200, 50), zAbstand, 0, 100);
+
+		GUI.Label (new Rect (10, 100, 400, 50), "Punkte: " + zPunkte);
 
 		if(zGewonnen)
 		{

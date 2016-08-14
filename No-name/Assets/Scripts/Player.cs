@@ -77,7 +77,12 @@ public class Player : MonoBehaviour {
 			zElementZahl++;
 			Destroy(other.gameObject);
 		}
-		Debug.Log (pNummer);
+
+		else if(other.transform.tag=="item")
+		{
+			hatGameManager.zPunkte++;
+			Destroy(other.gameObject);
+		}
 	}
 
 	void jump()
