@@ -65,8 +65,8 @@ public class Enemy : MonoBehaviour {
 	void laufe()
 	{
 		input = new Vector3 (1, 0, 0);
-		if (rigidbody.velocity.magnitude < maxSpeed) 
-		{rigidbody.AddRelativeForce (input * moveSpeed);
+		if (GetComponent<Rigidbody>().velocity.magnitude < maxSpeed) 
+		{GetComponent<Rigidbody>().AddRelativeForce (input * moveSpeed);
 		}
 
 		Debug.Log ("Enemy läuft");
@@ -74,15 +74,15 @@ public class Enemy : MonoBehaviour {
 
 	void jump()
 	{
-		Vector3 jump = rigidbody.velocity;
+		Vector3 jump = GetComponent<Rigidbody>().velocity;
 		jump.y = jumpHeight;
 		if (zJumpZahl < 1) 
 		{
-			rigidbody.velocity=jump;
+			GetComponent<Rigidbody>().velocity=jump;
 		} 
 		else if (zJumpZahl == 1) 
 		{
-			rigidbody.velocity=jump;
+			GetComponent<Rigidbody>().velocity=jump;
 		}
 		zJumpZahl++;
 	}

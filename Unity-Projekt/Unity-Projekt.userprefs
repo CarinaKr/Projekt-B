@@ -1,0 +1,13 @@
+﻿<Properties StartupItem="Unity-Projekt.CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Jump and Run\Scripts\Player.cs">
+    <Files>
+      <File FileName="Assets\Jump and Run\Scripts\Player.cs" Line="58" Column="100" />
+      <File FileName="Assets\Jump and Run\Scripts\GameManager.cs" Line="76" Column="6" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
