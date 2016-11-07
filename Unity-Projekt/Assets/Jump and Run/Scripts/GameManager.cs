@@ -99,4 +99,9 @@ public class GameManager : MonoBehaviour {
     {
         moveSpeed = zMoveSpeed;
     }
+
+    public void die()
+    {
+        transform.position = hatPlayer.transform.position;
+    }
 }

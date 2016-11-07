@@ -222,5 +222,6 @@ public class Player : MonoBehaviour {
 	public void die()
 	{  
 		transform.position=spawn;
+        hatGameManager.die();
 	}
 }
