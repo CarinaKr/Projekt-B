@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour {
 
     public Player hatPlayer;
     //public Enemy hatEnemy;
-    //public GUISkin hatSkin;
+    public GUISkin hatSkin;
 
     //private float zXPlayer, zYPlayer;
     //private float zXEnemy, zYEnemy;
@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour {
     private float zMoveSpeed;
     public float zPlayerFactor;
     public float moveSpeed;
+    public float slowFactor;
 	public int zPunkte;
 	private bool zGameOver,zGewonnen;
+
 
 
 	// Use this for initialization
@@ -46,7 +48,8 @@ public class GameManager : MonoBehaviour {
         {
             transform.position = new Vector3(hatPlayer.transform.position.x - zPlayerFactor, -10);
         }
-        transform.position = new Vector3( transform.position.x+moveSpeed,hatPlayer.transform.position.y, -10);
+        // transform.position = new Vector3( transform.position.x+moveSpeed,hatPlayer.transform.position.y, -10);   Kamera bewegt sich
+        transform.position = new Vector3(hatPlayer.transform.position.x, hatPlayer.transform.position.y,-10);
 
     }
 
@@ -67,14 +70,17 @@ public class GameManager : MonoBehaviour {
 
 	void OnGUI()
 	{
-		/*GUI.skin = hatSkin;
-		GUI.Label (new Rect (10, 10, 400, 50), "Distanz");
+		GUI.skin = hatSkin;
 
-		GUI.HorizontalSlider (new Rect (10, 70, 200, 50), zAbstand, 0, 100);
+        GUI.Label (new Rect (10, 10, 400, 50), "Punkte: " + zPunkte);
 
-		GUI.Label (new Rect (10, 100, 400, 50), "Punkte: " + zPunkte);
 
-		if(zGewonnen)
+		//.Label (new Rect (10, 10, 400, 50), "Distanz");
+		//.HorizontalSlider (new Rect (10, 70, 200, 50), zAbstand, 0, 100);
+
+		
+
+		/*if(zGewonnen)
 		{
 			GUI.Label(new Rect(50,50,100,50),"Gewonnen");
 
@@ -89,6 +95,13 @@ public class GameManager : MonoBehaviour {
 		/*if(GUI.Button (new Rect(10,190,100,45),"Quit"))
 		{Application.Quit();}*/
 	}
+    public void slowCamera()
+    {
+        if (moveSpeed > slowFactor)
+        {
+            moveSpeed -= slowFactor;
+        }
+    }
 
     public void setMoveSpeed(float pSpeed)
     {
@@ -100,8 +113,4 @@ public class GameManager : MonoBehaviour {
         moveSpeed = zMoveSpeed;
     }
 
-    public void die()
-    {
-        transform.position = hatPlayer.transform.position;
-    }
 }

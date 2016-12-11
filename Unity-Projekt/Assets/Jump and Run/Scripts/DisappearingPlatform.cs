@@ -35,7 +35,7 @@ public class DisappearingPlatform : MonoBehaviour {
         }	
 	}
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.tag == "player")
         {
