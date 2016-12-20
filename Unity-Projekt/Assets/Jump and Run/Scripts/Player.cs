@@ -38,8 +38,10 @@ public class Player : MonoBehaviour {
 		spawn = transform.position;
 		//Instantiate(Element[zElementZahl],new Vector2(0,0),Quaternion.Euler (0,0,0));
 		zElementZahl++;
+        this.GetComponent<Animator>().enabled = false;
+        this.GetComponent<Animator>().speed = 1.5f;
 
-        Physics.gravity = new Vector3(0, gravity, 0);
+        Physics2D.gravity = new Vector3(0, gravity, 0);
 	}
     void Update()
     {
@@ -61,13 +63,24 @@ public class Player : MonoBehaviour {
 
             }
         }
+
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            this.GetComponent<Animator>().enabled=true;
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            { this.GetComponent<Animator>().SetInteger("Direction", 3); }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            { this.GetComponent<Animator>().SetInteger("Direction", 1); }
+        }
+        else if (Input.GetButtonUp("Horizontal"))
+        { this.GetComponent<Animator>().enabled = false; }
     }
 	// Update is called once per frame
 	void FixedUpdate () {
 
         if (zJumpZahl == 0)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal")*moveSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal")*moveSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);  
         }
         else if (zJumpZahl != 0 && Input.GetAxisRaw("Horizontal") != 0)
         {
@@ -227,7 +240,7 @@ public class Player : MonoBehaviour {
                 GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed, Input.GetAxisRaw("Vertical") * climpSpeed, 0);//Grab on to ladder by itself
             }
             else
-            { GetComponent<Rigidbody2D>().gravityScale = gravity; }
+            { GetComponent<Rigidbody2D>().gravityScale = 1; }
         }
 
         if (other.transform.tag == "apple")
@@ -246,7 +259,7 @@ public class Player : MonoBehaviour {
     {
         if (other.transform.tag == "ladder")
         {
-            GetComponent<Rigidbody2D>().gravityScale=gravity;
+            GetComponent<Rigidbody2D>().gravityScale=1;
 
         }
 

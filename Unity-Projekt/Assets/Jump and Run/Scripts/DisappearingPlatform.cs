@@ -37,7 +37,7 @@ public class DisappearingPlatform : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.transform.tag == "player")
+        if (other.transform.tag == "player"&&other.transform.position.y>this.transform.position.y+(GetComponent<Collider2D>().bounds.size.y/2))
         {
             startTimer = true;
         }
