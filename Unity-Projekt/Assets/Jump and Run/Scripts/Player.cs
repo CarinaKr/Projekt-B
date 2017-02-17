@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
 
     private int zElementZahl = 0; //für vorgeschriebene Reihenfolge der Elemente
 	public int zElementGroesse;
+
+    private Vector3 Test, test1;
     
 
 
@@ -78,12 +80,14 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        if (zJumpZahl == 0)
+        if (zJumpZahl == 0 )
         {
+            Test= new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
             GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal")*moveSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);  
         }
-        else if (zJumpZahl != 0 && Input.GetAxisRaw("Horizontal") != 0)
+        else if (zJumpZahl != 0)
         {
+            test1 = new Vector3(Input.GetAxisRaw("Horizontal") * jumpSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
             GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal") * jumpSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
         }
 		
@@ -105,16 +109,28 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other)	
 	{
-		if (other.transform.tag == "floor") 
+        double unterkanteSpieler = transform.position.y - (transform.localScale.y / 2);
+        double oberkantePlatform = other.transform.position.y + other.transform.localScale.y / 2;
+
+        if (other.transform.tag == "floor") 
 		{
-			zJumpZahl=0;
-            onFloor = true;
+            if (unterkanteSpieler >= oberkantePlatform)
+            {
+                zJumpZahl = 0;
+                onFloor = true;
+            }
 		}
+
+        if (other.transform.tag == "mud" || other.transform.tag == "water")
+        {
+            zJumpZahl = 1;
+            onFloor = true;
+        }
 
 		if (other.transform.tag == "platform"||other.transform.tag=="moving_platform"||other.transform.tag=="disappearing_platform") 
 		{
-            double unterkanteSpieler = transform.position.y - (transform.localScale.y / 2);
-            double oberkantePlatform = other.transform.position.y + other.transform.localScale.y/2;
+            //double unterkanteSpieler = transform.position.y - (transform.localScale.y / 2);
+            //double oberkantePlatform = other.transform.position.y + other.transform.localScale.y/2;
             if (unterkanteSpieler>=oberkantePlatform) 
 			{zJumpZahl = 0;	} 
 			//else 
@@ -192,7 +208,7 @@ public class Player : MonoBehaviour {
             zJumpZahl = 0;
         }
 
-        if (other.transform.tag == "mud")
+        if (other.transform.tag == "mud"||other.transform.tag=="water")
         {
             moveSpeed /= mudFactor;
             jumpSpeed /= mudFactor;
@@ -263,7 +279,7 @@ public class Player : MonoBehaviour {
 
         }
 
-        if (other.transform.tag == "mud")
+        if (other.transform.tag == "mud"||other.transform.tag=="water")
         {
             moveSpeed *= mudFactor;
             jumpSpeed *= mudFactor;
