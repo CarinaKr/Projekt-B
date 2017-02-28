@@ -7,23 +7,28 @@ public class Player : MonoBehaviour {
 	public GameManager hatGameManager;
 
     private Vector3 spawn;
+    private Rigidbody2D rigBody;
 
-    public float moveSpeed;
+    //public float moveSpeed;
 	private Vector3 input;
-	private float maxSpeed=5f;
+	public float maxXSpeed;
+    public float jumpMaxXSpeed;
+    public float xAcc; //Beschleunigung; Geschwindigkeit, die der Bewegung in X-Richtung hinzugefügt wird.
+    public float jumpXAcc; //Beschleunigung in der Luft
+    public float jumpYAcc;
+    public float trampolineYAcc;
+    public float ladderSpeed;
+    public float airDrag;
+    public float startDrag;
     private bool onFloor=false;
 
-	public float jumpHeight;
-    public float jumpSpeed;
+	//public float jumpHeight;
+    //public float jumpSpeed;
     public float gravity;
 	private int zJumpZahl=0;
     private bool zJump;
 
-    public float climpSpeed;
-
     public float mudFactor;
-
-    public float trampolineHight;
 
     private bool zMunition;
     private int zWait;
@@ -37,6 +42,8 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        rigBody = GetComponent<Rigidbody2D>();
+        rigBody.drag = startDrag;
 		spawn = transform.position;
 		//Instantiate(Element[zElementZahl],new Vector2(0,0),Quaternion.Euler (0,0,0));
 		zElementZahl++;
@@ -82,13 +89,22 @@ public class Player : MonoBehaviour {
 
         if (zJumpZahl == 0 )
         {
-            Test= new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
-            GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal")*moveSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);  
+            rigBody.drag = startDrag;
+            if (rigBody.velocity.magnitude < maxXSpeed&&Input.GetAxisRaw("Horizontal")!=0)
+            {
+                rigBody.AddRelativeForce(new Vector2(Input.GetAxisRaw("Horizontal")*xAcc, 0));
+            }
+           // Test= new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
+            //GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal")*moveSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);  
         }
         else if (zJumpZahl != 0)
         {
-            test1 = new Vector3(Input.GetAxisRaw("Horizontal") * jumpSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
-            GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal") * jumpSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
+            if (rigBody.velocity.magnitude < jumpMaxXSpeed)
+            {
+                rigBody.AddRelativeForce(new Vector2(Input.GetAxisRaw("Horizontal") * jumpXAcc, 0));
+            }
+            //test1 = new Vector3(Input.GetAxisRaw("Horizontal") * jumpSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
+            //GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal") * jumpSpeed, GetComponent<Rigidbody2D>().velocity.y, 0);
         }
 		
 		if (Input.GetAxisRaw("Jump")==1&&zJump==false) 
@@ -210,17 +226,24 @@ public class Player : MonoBehaviour {
 
         if (other.transform.tag == "mud"||other.transform.tag=="water")
         {
-            moveSpeed /= mudFactor;
-            jumpSpeed /= mudFactor;
-            jumpHeight /= mudFactor;
+            //moveSpeed /= mudFactor;
+            //jumpSpeed /= mudFactor;
+            //jumpHeight /= mudFactor;
             zJumpZahl = 1;
+
+            xAcc /= mudFactor;
+            jumpXAcc /= mudFactor;
+            jumpYAcc /= mudFactor;
         }
 
         if (other.transform.tag == "trampoline")
         {
             if (zJumpZahl != 0)
             {
-                 GetComponent<Rigidbody2D>().velocity = new Vector3(GetComponent<Rigidbody2D>().velocity.x, trampolineHight, 0);
+                
+                    rigBody.AddForce(new Vector2(0, trampolineYAcc));
+                
+                //GetComponent<Rigidbody2D>().velocity = new Vector3(GetComponent<Rigidbody2D>().velocity.x, trampolineYAcc, 0);
                  zJumpZahl = 2;
             }
         }
@@ -253,7 +276,7 @@ public class Player : MonoBehaviour {
         {
             if (zJumpZahl == 0)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed, Input.GetAxisRaw("Vertical") * climpSpeed, 0);//Grab on to ladder by itself
+                GetComponent<Rigidbody2D>().velocity = new Vector3(rigBody.velocity.x, Input.GetAxisRaw("Vertical") * ladderSpeed, 0);//Grab on to ladder by itself
             }
             else
             { GetComponent<Rigidbody2D>().gravityScale = 1; }
@@ -281,9 +304,14 @@ public class Player : MonoBehaviour {
 
         if (other.transform.tag == "mud"||other.transform.tag=="water")
         {
-            moveSpeed *= mudFactor;
-            jumpSpeed *= mudFactor;
-            jumpHeight *= mudFactor;
+            /* moveSpeed *= mudFactor;
+             jumpSpeed *= mudFactor;
+             jumpHeight *= mudFactor;*/
+
+            xAcc *= mudFactor;
+            jumpXAcc *= mudFactor;
+            jumpYAcc *= mudFactor;
+
         }
 
         if (other.transform.tag == "information")
@@ -304,7 +332,7 @@ public class Player : MonoBehaviour {
 	void jump()
 	{
         //Vector3 jump = GetComponent<Rigidbody>().velocity;
-        Vector3 jump = new Vector3(Input.GetAxisRaw("Horizontal")*jumpSpeed, 0, 0);
+        /*Vector3 jump = new Vector3(Input.GetAxisRaw("Horizontal")*jumpSpeed, 0, 0);
 		jump.y = jumpHeight;
 		if (zJumpZahl < 1) 
 		{
@@ -313,7 +341,20 @@ public class Player : MonoBehaviour {
 		else if (zJumpZahl == 1) 
 		{
 			GetComponent<Rigidbody2D>().velocity=jump;
-		}
+		}*/
+
+        Vector2 jumpAcc = new Vector2(0, jumpYAcc);
+        if (zJumpZahl < 1)
+        {
+            rigBody.AddForce(jumpAcc);
+            rigBody.drag = airDrag;
+        }
+        else if (zJumpZahl == 1)
+        {
+            rigBody.AddForce(jumpAcc);
+            rigBody.drag = airDrag;
+        }
+
 		zJumpZahl++;
         onFloor = false;
 	}
