@@ -168,7 +168,7 @@ public class Player : MonoBehaviour {
             die();
 		}
 
-        if (other.transform.tag == "one-way-trigger")
+        /*if (other.transform.tag == "one-way-trigger")
         {
             if (transform.position.y - (GetComponent<Collider2D>().bounds.size.y / 2) > other.transform.position.y)
             {
@@ -177,6 +177,10 @@ public class Player : MonoBehaviour {
             }
             else
             { other.collider.isTrigger = true; }
+        }*/
+        if (other.transform.tag == "one-way-trigger")
+        {
+            zJumpZahl = 0; 
         }
     }
 
