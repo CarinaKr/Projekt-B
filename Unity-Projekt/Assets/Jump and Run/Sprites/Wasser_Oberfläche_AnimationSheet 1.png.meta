@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: 4085fe2524372724ca7af4816264f42a
-timeCreated: 1489052772
+guid: d7fe24d4fb07720439ed2f2a367f7da1
+timeCreated: 1489758493
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "Wasser_Oberfl\xE4che_AnimationSheet_0"
-    21300002: "Wasser_Oberfl\xE4che_AnimationSheet_1"
-    21300004: "Wasser_Oberfl\xE4che_AnimationSheet_2"
-    21300006: "Wasser_Oberfl\xE4che_AnimationSheet_3"
-    21300008: "Wasser_Oberfl\xE4che_AnimationSheet_4"
-    21300010: "Wasser_Oberfl\xE4che_AnimationSheet_5"
-    21300012: "Wasser_Oberfl\xE4che_AnimationSheet_6"
-    21300014: "Wasser_Oberfl\xE4che_AnimationSheet_7"
-    21300016: "Wasser_Oberfl\xE4che_AnimationSheet_8"
-    21300018: "Wasser_Oberfl\xE4che_AnimationSheet_9"
-    21300020: "Wasser_Oberfl\xE4che_AnimationSheet_10"
+    21300000: "Wasser_Oberfl\xE4che_AnimationSheet 1_0"
+    21300002: "Wasser_Oberfl\xE4che_AnimationSheet 1_1"
+    21300004: "Wasser_Oberfl\xE4che_AnimationSheet 1_2"
+    21300006: "Wasser_Oberfl\xE4che_AnimationSheet 1_3"
+    21300008: "Wasser_Oberfl\xE4che_AnimationSheet 1_4"
+    21300010: "Wasser_Oberfl\xE4che_AnimationSheet 1_5"
+    21300012: "Wasser_Oberfl\xE4che_AnimationSheet 1_6"
+    21300014: "Wasser_Oberfl\xE4che_AnimationSheet 1_7"
+    21300016: "Wasser_Oberfl\xE4che_AnimationSheet 1_8"
+    21300018: "Wasser_Oberfl\xE4che_AnimationSheet 1_9"
+    21300020: "Wasser_Oberfl\xE4che_AnimationSheet 1_10"
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -81,145 +81,145 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_0"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_0"
       rect:
         serializedVersion: 2
         x: 0
-        y: 2565
+        y: 2560
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_1"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_1"
       rect:
         serializedVersion: 2
         x: 0
-        y: 2309
+        y: 2304
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_2"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_2"
       rect:
         serializedVersion: 2
         x: 0
-        y: 2053
+        y: 2048
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_3"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_3"
       rect:
         serializedVersion: 2
         x: 0
-        y: 1797
+        y: 1792
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_4"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_4"
       rect:
         serializedVersion: 2
         x: 0
-        y: 1540
+        y: 1536
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_5"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_5"
       rect:
         serializedVersion: 2
         x: 0
-        y: 1285
+        y: 1280
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_6"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_6"
       rect:
         serializedVersion: 2
         x: 0
-        y: 1029
+        y: 1024
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_7"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_7"
       rect:
         serializedVersion: 2
         x: 0
-        y: 771
+        y: 768
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_8"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_8"
       rect:
         serializedVersion: 2
         x: 0
-        y: 516
+        y: 512
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_9"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_9"
       rect:
         serializedVersion: 2
         x: 0
-        y: 261
+        y: 256
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: "Wasser_Oberfl\xE4che_AnimationSheet_10"
+      name: "Wasser_Oberfl\xE4che_AnimationSheet 1_10"
       rect:
         serializedVersion: 2
         x: 0
-        y: 5
+        y: 0
         width: 512
-        height: 251
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
